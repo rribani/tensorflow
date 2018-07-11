@@ -1,4 +1,3 @@
-# PI Example
 # This Makefile compiles the label_image example for the Raspberry Pi.
 # See tensorflow/contrib/pi_examples/README.md for full build instructions.
 
@@ -15,10 +14,8 @@ LIBDIR := $(GENDIR)lib/
 BINDIR := $(GENDIR)bin/
 
 # The expected locations of the TensorFlow library.
-#TFLIBDIR := $(TFMAKEFILE_DIR)/gen/lib
-#TFLIBS := $(TFLIBDIR)/libtensorflow-core.a
-TFLIBDIR := /home/pi/tensorflow/tensorflow/tensorflow/contrib/lite/gen/lib
-TFLIBS := /home/pi/tensorflow/tensorflow/tensorflow/contrib/lite/gen/lib/libtensorflow-lite.a
+TFLIBDIR := $(TFMAKEFILE_DIR)/gen/lib
+TFLIBS := $(TFLIBDIR)/libtensorflow-core.a
 
 # Where the downloads have been stored.
 DOWNLOADSDIR := $(TFMAKEFILE_DIR)/downloads
@@ -48,7 +45,7 @@ INCLUDES := \
 LIBS := \
 -Wl,--allow-multiple-definition \
 -Wl,--whole-archive \
--ltensorflow-lite \
+-ltensorflow-core \
 -Wl,--no-whole-archive \
 -lstdc++ \
 -lprotobuf \
