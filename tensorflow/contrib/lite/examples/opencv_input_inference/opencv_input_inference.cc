@@ -4,13 +4,13 @@
 #include "tensorflow/contrib/lite/model.h"
 #include "tensorflow/contrib/lite/optional_debug_tools.h"
 
-// #include "opencv2/imgcodecs.hpp"
-// #include <iostream>
+#include "opencv2/imgcodecs.hpp"
+#include <iostream>
 
 // Usage: minimal <tflite model>
 
 using namespace tflite;
-// using namespace cv;
+using namespace cv;
 
 #define TFLITE_MINIMAL_CHECK(x)                              \
   if (!(x)) {                                                \
@@ -41,11 +41,10 @@ int main(int argc, char* argv[]) {
   //printf("=== Pre-invoke Interpreter State ===\n");
   //tflite::PrintInterpreterState(interpreter.get());
 
-  // Mat img;
-  // src1 = imread( "../../../../data/LinuxLogo.jpg" );
-  // std::vector<uchar> array(mat.rows*mat.cols);
-  // if (mat.isContinuous())
-  //   array = mat.data;
+  std::vector<uint8_t> in;
+  Mat img;
+  img = imread( "../../../../data/LinuxLogo.jpg" );
+  in.assign(img.begin<uint8_t>(), img.end<uint8_t>());
 
   // Fill input buffers
   // TODO(user): Insert code to fill input tensors

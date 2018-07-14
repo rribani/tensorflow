@@ -47,7 +47,8 @@ LIBS := \
 -lstdc++ \
 -lpthread \
 -lm \
--lz
+-lz \
+`pkg-config opencv --cflags --libs`
  
 # If we're on Linux, also link in the dl library.
 ifeq ($(HOST_OS),LINUX)
