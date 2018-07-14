@@ -56,7 +56,7 @@ endif
  
 # This library is the main target for this makefile. It will contain a minimal
 # runtime that can be linked in to other programs.
-BIN_PATH := $(BINDIR)minimal
+BIN_PATH := $(BINDIR)opencv_input_inference
  
 TF_LIB_PATH := $(MAKEFILE_DIR)/../../gen/lib/libtensorflow-lite.a
  
@@ -64,7 +64,7 @@ TF_LIB_PATH := $(MAKEFILE_DIR)/../../gen/lib/libtensorflow-lite.a
 # build files.
  
 SRCS := \
-tensorflow/contrib/lite/examples/minimal/minimal.cc
+tensorflow/contrib/lite/examples/opencv_input_inference/opencv_input_inference.cc
  
 OBJS := $(addprefix $(OBJDIR), \
 $(patsubst %.cc,%.o,$(patsubst %.c,%.o,$(SRCS))))
