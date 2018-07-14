@@ -19,11 +19,12 @@ using namespace cv;
   }
 
 int main(int argc, char* argv[]) {
-  if(argc != 2) {
-    fprintf(stderr, "minimal <tflite model>\n");
+  if(argc != 3) {
+    fprintf(stderr, "minimal <tflite model> <image path>\n");
     return 1;
   }
   const char* model_name = argv[1];
+  const char* image_name = argv[2];
 
   // Load model
   std::unique_ptr<tflite::FlatBufferModel> model = tflite::FlatBufferModel::BuildFromFile(model_name);
@@ -43,7 +44,7 @@ int main(int argc, char* argv[]) {
 
   std::vector<uint8_t> in;
   Mat img;
-  img = imread( "../../../../data/LinuxLogo.jpg" );
+  img = imread(image_name);
   in.assign(img.begin<uint8_t>(), img.end<uint8_t>());
 
   // Fill input buffers
